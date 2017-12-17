@@ -9,13 +9,13 @@ class Cotation(object):
       self.group = group
       self.code = code
       self.value = value
-      self.open = open
-      self.close = close
-      self.inc = inc
-      self.desc = desc
-      self.qty = qty
-      self.tranNumb = transNumb
-      self.capital = capital
+      self.open = float(open.replace(',', '.'))
+      self.close = float(close.replace(',', '.'))
+      self.inc = float(inc.replace(',', '.'))
+      self.desc = float(desc.replace(',', '.'))
+      self.qty = int(qty)
+      self.tranNumb = float(transNumb.replace(',', '.'))
+      self.capital = float(capital.replace(',', '.'))
 
   def __repr__(self):
       return '<Cotation(name={self.value!r})>'.format(self=self)
@@ -26,10 +26,10 @@ class CotationSchema(Schema):
   group = fields.Str()
   code = fields.Str()
   value = fields.Str()
-  open = fields.Str()
-  close = fields.Str()
-  inc = fields.Str()
-  desc = fields.Str()
-  qty = fields.Str()
-  transNumb = fields.Str()
-  capital = fields.Str()
+  open = fields.Float()
+  close = fields.Float()
+  inc = fields.Float()
+  desc = fields.Float()
+  qty = fields.Integer()
+  transNumb = fields.Float()
+  capital = fields.Float()

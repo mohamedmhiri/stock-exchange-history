@@ -13,14 +13,10 @@ CORS(app)
 def hello_world():
     return "Hello, World!"
 
-@app.route("/history/2015")
-def history_2015():
-    cotations = History.parse_2015()
-    return jsonify(cotations)
-
-@app.route("/history/2016")
-def history_2016():
-    cotations = History.parse_2016()
+@app.route("/history/<year>/<month>")
+def history(year, month):
+    history = History()
+    cotations = history.parse(year, month)
     return jsonify(cotations)
 
 # @app.route("/api/logon")
